@@ -9,10 +9,11 @@ public func configure(_ app: Application) async throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
 try app.databases.use(DatabaseConfigurationFactory.mongo(
-        connectionString: Environment.get("DATABASE_URL") ?? "mongodb://localhost:27017/vapor_database"
+        connectionString: Environment.get("DATABASE_URL") ?? "mongodb://mongodb:27017/pictron"
     ), as: .mongo)
 
     app.migrations.add(CreateTodo())
+    app.migrations.add(CreatePicture())
     // register routes
     try routes(app)
 }

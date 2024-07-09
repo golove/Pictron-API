@@ -24,6 +24,7 @@ final class Todo: Model, @unchecked Sendable {
         .init(
             id: self.id,
             title: self.$title.value
+			
         )
     }
 }
