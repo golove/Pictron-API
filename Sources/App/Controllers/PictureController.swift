@@ -29,8 +29,15 @@ struct PictureController:RouteCollection{
 	func create(req: Request) async throws -> PictureDTO {
 		let picture = try req.content.decode(PictureDTO.self).toModel()
 
-		try await picture.save(on: req.db)
-		return picture.toDTO()
+		if let pic = try await Picture.find(picture.id, on: req.db){
+			print("already exit")
+			return pic.toDTO()
+		} else {
+			try await picture.save(on: req.db)
+			return picture.toDTO()
+		}
+
+		
 	}
 	
 	@Sendable

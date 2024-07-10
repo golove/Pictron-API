@@ -14,6 +14,7 @@ try app.databases.use(DatabaseConfigurationFactory.mongo(
 
     app.migrations.add(CreateTodo())
     app.migrations.add(CreatePicture())
+    // Configure custom hostname.
     // register routes
     try routes(app)
 }
