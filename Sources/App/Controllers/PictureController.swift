@@ -47,7 +47,7 @@ struct PictureController:RouteCollection{
 		}
 
 		try await picture.delete(on: req.db)
-		return .noContent
+		return .ok
 	}
 	
 	@Sendable
